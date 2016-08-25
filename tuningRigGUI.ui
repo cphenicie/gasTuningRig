@@ -141,17 +141,17 @@
     </property>
     <item>
      <property name="text">
-      <string>GasValve</string>
+      <string>Gas Valve</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>CryoValve</string>
+      <string>Cryo Valve</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>PumpValve</string>
+      <string>Pump Valve</string>
      </property>
     </item>
    </widget>
