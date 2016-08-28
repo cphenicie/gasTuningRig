@@ -15,11 +15,11 @@ qtCreatorFile = "tuningRigGUI.ui"  # Enter file here.
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
 
 ###### USER INPUT ######
-dev = "Dev1/"  # The location of the device, which can be found in the program NI MAX -> Devices and Interfaces. MAKE SURE TO END STRING IN A "/"
-digitalPort = "port0/"  # Which digital port the TTL pulses will come from (P0.x is port0) MAKE SURE TO END STRING IN A "/"
-gasLine = 1  # Which line within the above port is leading to the gas valve's circuit
+dev = "Dev2/"  # The location of the device, which can be found in the program NI MAX -> Devices and Interfaces. MAKE SURE TO END STRING IN A "/"
+digitalPort = "port1/"  # Which digital port the TTL pulses will come from (P0.x is port0) MAKE SURE TO END STRING IN A "/"
+gasLine = 3  # Which line within the above port is leading to the gas valve's circuit
 pumpLine = 2
-cryoLine = 7
+cryoLine = 0
 analogPort = "ai3"  # Which analog input grouping the pressure sensor is hooked up to
 ### END USER INPUT #####
 
