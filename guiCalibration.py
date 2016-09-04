@@ -1,3 +1,5 @@
+# If this doesn't work, remember,you changed makeAnalogIn in PyDAQshortcuts
+#
 # Bug: If you start multiple timers in multiple instances of doOperation, only the last one will actually be connected
 # to the timeout
 
@@ -37,7 +39,7 @@ fSamp = 50000  # Sampling frequency (maximum is 50000)
 nSamp = 10  # Therefore, our reading will be the average of 10 samples over 200us
 readPressAvg = pydaqmx.TaskHandle()
 data = np.zeros((int(nSamp),), dtype=np.int16)
-makeAnalogIn(dev, analogPort, readPressAvg, fSamp, nSamp)
+makeAnalogIn(dev + analogPort, readPressAvg, fSamp, nSamp)
 
 ###### Configure digital switches for valves ######
 gasSwitch = TTLSwitch(dev, digitalPort, gasLine)

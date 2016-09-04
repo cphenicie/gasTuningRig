@@ -46,7 +46,7 @@ class TTLSwitch:
 
 # Configure an task handle as an analog channel to read in a voltage in differential mode. Need to specify the device,
 # port, handle that will be configured, and the frequency and number of measurements that will be made.
-def makeAnalogIn(dev, port, handle, fSamp, nSamp):
+def makeAnalogIn(portString, handle, fSamp, nSamp):
 
     ## Create a task out of an existing handle
     # int32 DAQmxCreateTask (const char taskName[], TaskHandle *taskHandle);
@@ -56,7 +56,7 @@ def makeAnalogIn(dev, port, handle, fSamp, nSamp):
 
     ## Create Analog In voltage channel
     # int32 DAQmxCreateAIVoltageChan (TaskHandle taskHandle, const char physicalChannel[], const char nameToAssignToChannel[], int32 terminalConfig, float64 minVal, float64 maxVal, int32 units, const char customScaleName[]);
-    chan = dev + port  # Location of the channel (this should be a physical channel, but it will be used as a virtual channel?)
+    chan = portString  # Location of the channel (this should be a physical channel, but it will be used as a virtual channel?)
     chanName = ""  # Name(s) to assign to the created virtual channel(s). "" means physical channel name will be used
     termConfig = pydaqmx.DAQmx_Val_Diff  # Is this singled/double referenced, differential, etc.\
     vMin = -10  # Minimum voltage you expect to measure (in units described by variable "units" below)
