@@ -23,17 +23,8 @@ digitalPort = "port1/"  # Which digital port the TTL pulses will come from (P0.x
 gasLine = 3  # Which line within the above port is leading to the gas valve's circuit
 pumpLine = 2
 cryoLine = 0
-analogPort = "ai3"  # Which analog input grouping the pressure sensor is hooked up to
+# analogPort = "ai3"  # Which analog input grouping the pressure sensor is hooked up to
 ### END USER INPUT #####
-
-
-
-######## Configure analog input from the pressure sensor ##########
-# fSamp = 50000  # Sampling frequency (maximum is 50000)
-# nSamp = 10  # Therefore, our reading will be the average of 10 samples over 200us
-# readPressAvg = pydaqmx.TaskHandle()
-# data = np.zeros((int(nSamp),), dtype=np.int16)
-#makeAnalogIn(dev + analogPort, readPressAvg, fSamp, nSamp)
 
 ###### Configure pressure sensor using RS232 connection #####
 ser = serial.Serial('COM3', 9600, timeout=0, parity=serial.PARITY_NONE, rtscts=1)
@@ -73,6 +64,7 @@ class MyApp(QtGui.QMainWindow, Ui_MainWindow):
         self.myTimer.start(1000)  # Update every second
         self.show()
 
+
     def doOperation(self):
         valve = str(self.opValveChoice.currentText())
         openTime = (self.opOpenTime.value())
@@ -83,13 +75,8 @@ class MyApp(QtGui.QMainWindow, Ui_MainWindow):
         self.opTimer.start(openTime)
 
     def showPressure(self):
-        # getAnalogIn(readPressAvg, data)
-        # dataCal = (data * (20.0 / 2 ** 16) - 0.029) * 1 / 0.946  # This is the empirical calibration
-        # val = np.mean(dataCal)  # average over the 10 consecutive values
-        # val_std = np.std(dataCal)  # standard deviation of the mean
-        # self.pressureWindow.setText("%.4f +/- %.4f" % (val, val_std))  # Write the pressure to the GUI
-        pressStr = ser.readline
-        self.pressureWindow.setText(pressStr[0:4])  # Write the pressure to the GUI
+        pressStr = ser.readline()
+        self.pressureWindow.setText(pressStr[1:4])  # Write the pressure to the GUI
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
